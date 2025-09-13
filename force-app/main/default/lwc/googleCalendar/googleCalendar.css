@@ -1,0 +1,70 @@
+.gc-container {
+  min-height: 480px;
+}
+
+.gc-header .gc-title {
+  font-weight: 600;
+}
+
+.gc-header .gc-month {
+  font-size: 1.1rem;
+}
+
+.gc-weekdays {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.gc-weekday {
+  color: #5f6a7d;
+  padding: 6px 0;
+}
+
+.gc-grid {
+  min-height: 360px;
+}
+
+.gc-cell {
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  height: 110px;
+  padding: 4px;
+  position: relative;
+  background: #fff;
+}
+
+.gc-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.gc-in-month {
+}
+
+.gc-out-month {
+  background: #f9f9f9;
+  color: #9ba3ae;
+}
+
+.gc-day-number {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.75rem;
+}
+
+.gc-events {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gc-event {
+  background: #f3f2f2;
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.gc-event:hover {
+  background: #eaeaea;
+}

@@ -1,0 +1,16 @@
+<template>
+  <template lwc:if={isLoading}>
+    <lightning-spinner
+      alternative-text="Loading calendar"
+      size="medium"
+    ></lightning-spinner>
+  </template>
+  <template lwc:else>
+    <template lwc:if={loginCheck}>
+      <c-google-calendar></c-google-calendar>
+    </template>
+    <template lwc:else>
+      <c-calendar-login-screen></c-calendar-login-screen>
+    </template>
+  </template>
+</template>

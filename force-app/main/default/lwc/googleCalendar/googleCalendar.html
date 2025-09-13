@@ -1,0 +1,75 @@
+<template>
+  <div class="gc-container slds-card slds-p-around_small slds-is-relative">
+    <template lwc:if={isLoading}>
+      <lightning-spinner
+        alternative-text="Loading calendar"
+        size="medium"
+      ></lightning-spinner>
+    </template>
+    <template lwc:else>
+      <div
+        class="gc-header slds-grid slds-grid_vertical-align-center slds-p-bottom_small"
+      >
+        <div class="slds-col slds-grow">
+          <span class="gc-month slds-m-left_medium">{monthLabel}</span>
+        </div>
+        <div class="slds-col slds-no-flex">
+          <lightning-button-icon
+            class="slds-m-right_x-small"
+            icon-name="utility:chevronleft"
+            alternative-text="Previous month"
+            title="Previous month"
+            onclick={handlePrevMonth}
+          ></lightning-button-icon>
+          <lightning-button-icon
+            class="slds-m-right_x-small"
+            icon-name="utility:chevronright"
+            alternative-text="Next month"
+            title="Next month"
+            onclick={handleNextMonth}
+          ></lightning-button-icon>
+          <lightning-button
+            label="Today"
+            onclick={handleToday}
+            variant="neutral"
+          ></lightning-button>
+        </div>
+      </div>
+
+      <div
+        class="gc-weekdays slds-grid slds-text-title_caps slds-p-bottom_x-small"
+      >
+        <template for:each={weekdays} for:item="dayName">
+          <div key={dayName} class="gc-weekday slds-col slds-text-align_center">
+            {dayName}
+          </div>
+        </template>
+      </div>
+
+      <div class="gc-grid slds-grid slds-wrap">
+        <template for:each={weeks} for:item="week" for:index="wIndex">
+          <template for:each={week} for:item="day" for:index="dIndex">
+            <div key={day.key} class={day.cellClass} data-iso={day.iso}>
+              <div class="gc-day-number">{day.dayNumber}</div>
+              <div class="gc-events">
+                <template if:true={day.events}>
+                  <template for:each={day.events} for:item="evt">
+                    <div
+                      key={evt.eventId}
+                      class="gc-event slds-truncate"
+                      data-link={evt.htmlLink}
+                      title={evt.tooltip}
+                      onclick={handleEventClick}
+                    >
+                      {evt.label}
+                    </div>
+                  </template>
+                </template>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>
